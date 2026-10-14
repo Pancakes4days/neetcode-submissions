@@ -1,0 +1,22 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+
+        l = longest = maxf = 0
+        count = defaultdict(int)
+
+        for r in range(len(s)):
+
+            count[s[r]] += 1
+            maxf = max(maxf, count[s[r]])
+            while (r - l + 1) - maxf > k:
+                #remove 1 count of this letter
+                count[s[l]] -= 1
+                l += 1
+            
+            longest = max(longest, r - l + 1)
+
+
+
+
+        return longest
+        
